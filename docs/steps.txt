@@ -1,0 +1,233 @@
+1. New Class Lib projects
+magster@Magsters-MacBook-Pro CQRS-ES % dotnet new classlib -o CQRS.Core
+The template "Class Library" was created successfully.
+
+Processing post-creation actions...
+Restoring /Users/magster/workspace/cs/cqrs-es-sm-post/CQRS-ES/CQRS.Core/CQRS.Core.csproj:
+  Determining projects to restore...
+  Restored /Users/magster/workspace/cs/cqrs-es-sm-post/CQRS-ES/CQRS.Core/CQRS.Core.csproj (in 364 ms).
+Restore succeeded.
+
+2. Create Solution 
+magster@Magsters-MacBook-Pro CQRS-ES % cd ..
+magster@Magsters-MacBook-Pro cqrs-es-sm-post % ls
+CQRS-ES         SM-Post         steps.txt
+magster@Magsters-MacBook-Pro cqrs-es-sm-post % cd SM-Post 
+magster@Magsters-MacBook-Pro SM-Post % pwd
+/Users/magster/workspace/cs/cqrs-es-sm-post/SM-Post
+magster@Magsters-MacBook-Pro SM-Post % dotnet new sln 
+The template "Solution File" was created successfully.
+
+Create Class Common Library for the Post Side
+magster@Magsters-MacBook-Pro cqrs-es-sm-post % cd SM-Post
+magster@Magsters-MacBook-Pro SM-Post % dotnet new classlib -o Post.Common
+The template "Class Library" was created successfully.
+
+Processing post-creation actions...
+Restoring /Users/magster/workspace/cs/cqrs-es-sm-post/SM-Post/Post.Common/Post.Common.csproj:
+  Determining projects to restore...
+  Restored /Users/magster/workspace/cs/cqrs-es-sm-post/SM-Post/Post.Common/Post.Common.csproj (in 68 ms).
+Restore succeeded.
+
+
+3. Create WebApi Project for Command Side
+
+magster@Magsters-MacBook-Pro SM-Post % cd Post.Cmd 
+magster@Magsters-MacBook-Pro Post.Cmd % dotnet new webapi -o Post.Cmd.Api
+The template "ASP.NET Core Web API" was created successfully.
+
+Processing post-creation actions...
+Restoring /Users/magster/workspace/cs/cqrs-es-sm-post/SM-Post/Post.Cmd/Post.Cmd.Api/Post.Cmd.Api.csproj:
+  Determining projects to restore...
+  Restored /Users/magster/workspace/cs/cqrs-es-sm-post/SM-Post/Post.Cmd/Post.Cmd.Api/Post.Cmd.Api.csproj (in 3.25 sec).
+Restore succeeded.
+
+4. Create Domain Layer for Command Side
+magster@Magsters-MacBook-Pro Post.Cmd % dotnet new classlib -o Post.Cmd.Domain
+The template "Class Library" was created successfully.
+
+Processing post-creation actions...
+Restoring /Users/magster/workspace/cs/cqrs-es-sm-post/SM-Post/Post.Cmd/Post.Cmd.Domain/Post.Cmd.Domain.csproj:
+  Determining projects to restore...
+  Restored /Users/magster/workspace/cs/cqrs-es-sm-post/SM-Post/Post.Cmd/Post.Cmd.Domain/Post.Cmd.Domain.csproj (in 71 ms).
+Restore succeeded.
+
+5. Create Infrastructure Layer for Command Side
+magster@Magsters-MacBook-Pro Post.Cmd % dotnet new classlib -o Post.Cmd.Infrastructure
+The template "Class Library" was created successfully.
+
+Processing post-creation actions...
+Restoring /Users/magster/workspace/cs/cqrs-es-sm-post/SM-Post/Post.Cmd/Post.Cmd.Infrastructure/Post.Cmd.Infrastructure.csproj:
+  Determining projects to restore...
+  Restored /Users/magster/workspace/cs/cqrs-es-sm-post/SM-Post/Post.Cmd/Post.Cmd.Infrastructure/Post.Cmd.Infrastructure.csproj (in 67 ms).
+Restore succeeded.
+
+6. CREATE API project on the Query Side 
+magster@Magsters-MacBook-Pro Post.Cmd % cd ..
+magster@Magsters-MacBook-Pro SM-Post % cd Post.Query 
+magster@Magsters-MacBook-Pro Post.Query % dotnet new webapi -o Post.Query.Api
+The template "ASP.NET Core Web API" was created successfully.
+
+Processing post-creation actions...
+Restoring /Users/magster/workspace/cs/cqrs-es-sm-post/SM-Post/Post.Query/Post.Query.Api/Post.Query.Api.csproj:
+  Determining projects to restore...
+  Restored /Users/magster/workspace/cs/cqrs-es-sm-post/SM-Post/Post.Query/Post.Query.Api/Post.Query.Api.csproj (in 125 ms).
+Restore succeeded.
+
+7. Create Domain Layer for Query Side
+magster@Magsters-MacBook-Pro Post.Query % dotnet new classlib -o Post.Query.Domain
+The template "Class Library" was created successfully.
+
+Processing post-creation actions...
+Restoring /Users/magster/workspace/cs/cqrs-es-sm-post/SM-Post/Post.Query/Post.Query.Domain/Post.Query.Domain.csproj:
+  Determining projects to restore...
+  Restored /Users/magster/workspace/cs/cqrs-es-sm-post/SM-Post/Post.Query/Post.Query.Domain/Post.Query.Domain.csproj (in 69 ms).
+Restore succeeded.
+
+8. Create Infrastructure Layer for Query Side
+magster@Magsters-MacBook-Pro Post.Query % dotnet new classlib -o Post.Query.Infrastructure
+
+9. Add the Projects to the Solution
+magster@Magsters-MacBook-Pro cqrs-es-sm-post % dotnet sln add SM-Post/Post.Cmd/Post.Cmd.Api/Post.Cmd.Api.csproj
+Project `SM-Post/Post.Cmd/Post.Cmd.Api/Post.Cmd.Api.csproj` added to the solution.
+magster@Magsters-MacBook-Pro cqrs-es-sm-post % dotnet sln add SM-Post/Post.Cmd/Post.Cmd.Domain/Post.Cmd.Domain.csproj
+Project `SM-Post/Post.Cmd/Post.Cmd.Domain/Post.Cmd.Domain.csproj` added to the solution.
+magster@Magsters-MacBook-Pro cqrs-es-sm-post % dotnet sln add SM-Post/Post.Cmd/Post.Cmd.Infrastructure/Post.Cmd.Infrastructure.csproj
+Project `SM-Post/Post.Cmd/Post.Cmd.Infrastructure/Post.Cmd.Infrastructure.csproj` added to the solution.
+magster@Magsters-MacBook-Pro cqrs-es-sm-post % dotnet sln add SM-Post/Post.Query/Post.Query.Api/Post.Query.Api.csproj
+Project `SM-Post/Post.Query/Post.Query.Api/Post.Query.Api.csproj` added to the solution.
+magster@Magsters-MacBook-Pro cqrs-es-sm-post % dotnet sln add SM-Post/Post.Query/Post.Query.Domain/Post.Query.Domain.csproj
+Project `SM-Post/Post.Query/Post.Query.Domain/Post.Query.Domain.csproj` added to the solution.
+magster@Magsters-MacBook-Pro cqrs-es-sm-post % dotnet sln add SM-Post/Post.Query/Post.Query.Infrastructure/Post.Query.Infrastructure.csproj
+Project `SM-Post/Post.Query/Post.Query.Infrastructure/Post.Query.Infrastructure.csproj` added to the solution. 
+magster@Magsters-MacBook-Pro cqrs-es-sm-post % dotnet sln add CQRS-ES/CQRS.Core/CQRS.Core.csproj
+Project `CQRS-ES/CQRS.Core/CQRS.Core.csproj` added to the solution.
+magster@Magsters-MacBook-Pro cqrs-es-sm-post % dotnet sln add SM-Post/Post.Common/Post.Common.csproj
+Project `SM-Post/Post.Common/Post.Common.csproj` added to the solution.
+
+10. Add Project References to the Project
+magster@Magsters-MacBook-Pro cqrs-es  
+dotnet add SM-Post/Post.Cmd/Post.Cmd.Api/Post.Cmd.Api.csproj reference CQRS-ES/CQRS.Core/CQRS.Core.csproj
+Reference `..\..\..\CQRS-ES\CQRS.Core\CQRS.Core.csproj` added to the project.
+dotnet add SM-Post/Post.Cmd/Post.Cmd.Api/Post.Cmd.Api.csproj reference SM-Post/Post.Cmd/Post.Cmd.Domain/Post.Cmd.Domain.csproj
+Reference `..\Post.Cmd.Domain\Post.Cmd.Domain.csproj` added to the project.
+dotnet add SM-Post/Post.Cmd/Post.Cmd.Api/Post.Cmd.Api.csproj reference SM-Post/Post.Cmd/Post.Cmd.Infrastructure/Post.Cmd.Infrastructure.csproj
+Reference `..\Post.Cmd.Infrastructure\Post.Cmd.Infrastructure.csproj` added to the project.
+magster@Magsters-MacBook-Pro cqrs-es-sm-post % dotnet add SM-Post/Post.Cmd/Post.Cmd.Api/Post.Cmd.Api.csproj reference SM-Post/Post.Common/Post.Common.csproj
+Reference `..\..\Post.Common\Post.Common.csproj` added to the project.
+--
+Domain
+dotnet add SM-Post/Post.Cmd/Post.Cmd.Domain/Post.Cmd.Domain.csproj reference CQRS-ES/CQRS.Core/CQRS.Core.csproj
+Reference `..\..\..\CQRS-ES\CQRS.Core\CQRS.Core.csproj` added to the project.
+dotnet add SM-Post/Post.Cmd/Post.Cmd.Domain/Post.Cmd.Domain.csproj reference SM-Post/Post.Common/Post.Common.csproj
+Reference `..\..\..\Post.Common\Post.Common.csproj` added to the project.
+--
+Infrastructure
+dotnet add SM-Post/Post.Cmd/Post.Cmd.Infrastructure/Post.Cmd.Infrastructure.csproj reference CQRS-ES/CQRS.Core/CQRS.Core.csproj
+Reference `..\..\..\CQRS-ES\CQRS.Core\CQRS.Core.csproj` added to the project.
+dotnet add SM-Post/Post.Cmd/Post.Cmd.Infrastructure/Post.Cmd.Infrastructure.csproj reference SM-Post/Post.Cmd/Post.Cmd.Domain/Post.Cmd.Domain.csproj
+Reference `..\Post.Cmd.Domain\Post.Cmd.Domain.csproj` added to the project.
+dotnet add SM-Post/Post.Cmd/Post.Cmd.Infrastructure/Post.Cmd.Infrastructure.csproj reference SM-Post/Post.Common/Post.Common.csproj
+Reference `..\..\..\Post.Common\Post.Common.csproj` added to the project.
+--
+Common
+dotnet add SM-Post/Post.Common/Post.Common.csproj reference CQRS-ES/CQRS.Core/CQRS.Core.csproj
+Reference `..\..\..\CQRS-ES\CQRS.Core\CQRS.Core.csproj` added to the project.
+--
+Query.Api
+dotnet add SM-Post/Post.Query/Post.Query.Api/Post.Query.Api.csproj reference CQRS-ES/CQRS.Core/CQRS.Core.csproj
+Reference `..\..\..\CQRS-ES\CQRS.Core\CQRS.Core.csproj` added to the project.
+dotnet add SM-Post/Post.Query/Post.Query.Api/Post.Query.Api.csproj reference SM-Post/Post.Query/Post.Query.Domain/Post.Query.Domain.csproj
+Reference `..\Post.Query.Domain\Post.Query.Domain.csproj` added to the project.
+dotnet add SM-Post/Post.Query/Post.Query.Api/Post.Query.Api.csproj reference SM-Post/Post.Query/Post.Query.Infrastructure/Post.Query.Infrastructure.csproj
+Reference `..\Post.Query.Infrastructure\Post.Query.Infrastructure.csproj` added to the project.
+dotnet add SM-Post/Post.Query/Post.Query.Api/Post.Query.Api.csproj reference SM-Post/Post.Common/Post.Common.csproj
+Reference `..\..\..\Post.Common\Post.Common.csproj` added to the project.
+--
+Query.Domain
+dotnet add SM-Post/Post.Query/Post.Query.Domain/Post.Query.Domain.csproj reference CQRS-ES/CQRS.Core/CQRS.Core.csproj
+Reference `..\..\..\CQRS-ES\CQRS.Core\CQRS.Core.csproj` added to the project.
+dotnet add SM-Post/Post.Query/Post.Query.Domain/Post.Query.Domain.csproj reference SM-Post/Post.Common/Post.Common.csproj
+Reference `..\..\..\Post.Common\Post.Common.csproj` added to the project.
+--
+Query.Infrastructure  
+dotnet add SM-Post/Post.Query/Post.Query.Infrastructure/Post.Query.Infrastructure.csproj reference CQRS-ES/CQRS.Core/CQRS.Core.csproj
+Reference `..\..\..\CQRS-ES\CQRS.Core\CQRS.Core.csproj` added to the project.
+dotnet add SM-Post/Post.Query/Post.Query.Infrastructure/Post.Query.Infrastructure.csproj reference SM-Post/Post.Query/Post.Query.Domain/Post.Query.Domain.csproj
+Reference `..\Post.Query.Domain\Post.Query.Domain.csproj` added to the project.
+dotnet add SM-Post/Post.Query/Post.Query.Infrastructure/Post.Query.Infrastructure.csproj reference SM-Post/Post.Common/Post.Common.csproj
+Reference `..\..\..\Post.Common\Post.Common.csproj` added to the project.
+
+11. Add Nuget Packages 
+mongodb
+confluent.kafka 
+Microsoft.Extensions.Options
+Microsoft.EntityFrameworkCore.SqlServer
+Microsoft.Extensions.Hosting
+
+dotnet add CQRS-ES/CQRS.Core/CQRS.Core.csproj package MongoDB.Driver
+
+dotnet add SM-Post/Post.Cmd/Post.Cmd.Infrastructure/Post.Cmd.Infrastructure.csproj package MongoDB.Driver
+dotnet add SM-Post/Post.Cmd/Post.Cmd.Infrastructure/Post.Cmd.Infrastructure.csproj package Confluent.Kafka
+dotnet add SM-Post/Post.Cmd/Post.Cmd.Infrastructure/Post.Cmd.Infrastructure.csproj package Microsoft.Extensions.Options
+
+dotnet add SM-Post/Post.Query/Post.Query.Infrastructure/Post.Query.Infrastructure.csproj package Confluent.Kafka
+dotnet add SM-Post/Post.Query/Post.Query.Infrastructure/Post.Query.Infrastructure.csproj package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add SM-Post/Post.Query/Post.Query.Infrastructure/Post.Query.Infrastructure.csproj package Microsoft.Extensions.Hosting
+
+magster@Magsters-MacBook-Pro cqrs-es-sm-post % dotnet add CQRS-ES/CQRS.Core/CQRS.Core.csproj package MongoDB.Driver
+  Determining projects to restore...
+  Writing /var/folders/9_/_0gq15h53x5gktg_kb_9mcvm0000gn/T/tmpbwts8P.tmp
+info : Adding PackageReference for package 'MongoDB.Driver' into project 'CQRS-ES/CQRS.Core/CQRS.Core.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/mongodb.driver/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/mongodb.driver/index.json 158ms
+info : Restoring packages for /Users/magster/workspace/cs/cqrs-es-sm-post/CQRS-ES/CQRS.Core/CQRS.Core.csproj...
+info :   GET https://api.nuget.org/v3-flatcontainer/mongodb.driver/index.json
+info : Installed MongoDB.Driver 3.1.0 from https://api.nuget.org/v3/index.json with content hash +O7lKaIl7VUHptE0hqTd7UY1G5KDp/o8S4upG7YL4uChMNKD/U6tz9i17nMGHaD/L2AiPLgaJcaDe2XACsegGA==.
+info :   OK https://api.nuget.org/v3-vulnerabilities/2024.12.21.05.12.11/vulnerability.base.json 22ms
+info : Package 'MongoDB.Driver' is compatible with all the specified frameworks in project 'CQRS-ES/CQRS.Core/CQRS.Core.csproj'.
+info : PackageReference for package 'MongoDB.Driver' version '3.1.0' added to file '/Users/magster/workspace/cs/cqrs-es-sm-post/CQRS-ES/CQRS.Core/CQRS.Core.csproj'.
+info : Writing assets file to disk. Path: /Users/magster/workspace/cs/cqrs-es-sm-post/CQRS-ES/CQRS.Core/obj/project.assets.json
+log  : Restored /Users/magster/workspace/cs/cqrs-es-sm-post/CQRS-ES/CQRS.Core/CQRS.Core.csproj (in 3.96 sec).
+
+12. Restore the Solution
+magster@Magsters-MacBook-Pro cqrs-es-sm-post % dotnet restore
+magster@Magsters-MacBook-Pro cqrs-es-sm-post % dotnet restore
+  Determining projects to restore...
+  Restored /Users/magster/workspace/cs/cqrs-es-sm-post/SM-Post/Post.Query/Post.Query.Domain/Post.Query.Domain.csproj (in 174 ms).
+  Restored /Users/magster/workspace/cs/cqrs-es-sm-post/SM-Post/Post.Cmd/Post.Cmd.Domain/Post.Cmd.Domain.csproj (in 174 ms).
+  Restored /Users/magster/workspace/cs/cqrs-es-sm-post/SM-Post/Post.Common/Post.Common.csproj (in 174 ms).
+  Restored /Users/magster/workspace/cs/cqrs-es-sm-post/SM-Post/Post.Cmd/Post.Cmd.Api/Post.Cmd.Api.csproj (in 174 ms).
+  Restored /Users/magster/workspace/cs/cqrs-es-sm-post/SM-Post/Post.Query/Post.Query.Api/Post.Query.Api.csproj (in 221 ms).
+  3 of 8 projects are up-to-date for restore.
+
+13. Setup Git
+magster@Magsters-MacBook-Pro cqrs-es-sm-post % git init
+magster@Magsters-MacBook-Pro cqrs-es-sm-post % git init
+Initialized empty Git repository in /Users/magster/workspace/cs/cqrs-es-sm-post/.git/
+
+magster@Magsters-MacBook-Pro cqrs-es-sm-post % git add .gitignore 
+magster@Magsters-MacBook-Pro cqrs-es-sm-post % git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   .gitignore
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .DS_Store
+        CQRS-ES/
+        SM-Post.sln
+        SM-Post/
+        steps.txt
+
+magster@Magsters-MacBook-Pro cqrs-es-sm-post % git commit -m "Initial Commit to add the gitignore file"
+[main (root-commit) 4120c0f] Initial Commit to add the gitignore file
+ 1 file changed, 78 insertions(+)
+ create mode 100644 .gitignore
+
+14. Setup the Repository oon Remote and add reference to the local repository
+magster@Magsters-MacBook-Pro cqrs-es-sm-post % git remote add origin
