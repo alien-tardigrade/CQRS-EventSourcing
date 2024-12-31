@@ -1,0 +1,7 @@
+Event Store
+1. Append-only store, no updates and deletes allowed
+2. Each event is a fact, a statement of something that happened and represents a version of the state at any point in time
+3. Events are immutable and cannot be changed
+4. Events are stored in the order they were created
+5. State of the aggregate is built by replaying the events
+6. Implement Optimistic Concurrency Control (OCC) to ensure that the state is not changed by multiple threads at the same time

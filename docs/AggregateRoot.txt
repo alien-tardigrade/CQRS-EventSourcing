@@ -1,0 +1,5 @@
+The AggregateRoot
+1. An aggregate is a cluster of domain objects that can be treated as a single unit. An aggregate will have one of its component objects be the aggregate root. Any references from outside the aggregate should only go to the aggregate root. The root can thus ensure the integrity of the aggregate as a whole.
+2. The aggregate root is the only member of the aggregate that outside objects are allowed to hold references to. The root can thus ensure the integrity of the aggregate as a whole.
+3. It manages which apply methods are called on the domain objects it contains based on the Command it receives.
+4. The aggregate root maintains the list of Uncommitted changes in the form of events, that need to be applied to the domain objects it contains and persisted to the Data Store
