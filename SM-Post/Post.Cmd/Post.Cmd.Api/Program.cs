@@ -52,6 +52,7 @@ void ConfigureServices(IServiceCollection services)
         return database.GetCollection<EventModel>("EventStore");
     });
 
+    // Will create a new Instance of the EventStoreRepository for each request
     services.AddScoped<IEventStoreRepository, EventStoreRepository>();
 
     // Other service registrations...

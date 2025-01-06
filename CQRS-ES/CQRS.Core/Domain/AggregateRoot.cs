@@ -51,7 +51,7 @@ public abstract class AggregateRoot
         }
 
         // Increment the Version of the Aggregate
-        Version++;
+        //Version++;
     }
 
     protected void RaiseEvent(BaseEvent @event)

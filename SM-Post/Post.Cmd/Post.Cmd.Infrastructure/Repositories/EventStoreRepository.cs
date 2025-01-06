@@ -11,16 +11,6 @@ public class EventStoreRepository:IEventStoreRepository
     // Define the MongoDB Collection
     private readonly IMongoCollection<EventModel> _eventStoreCollection;
 
-    /* Moved to Singleton
-     public EventStoreRepository(IMongoClient mongoClient)
-    {
-        // Get the database
-        var database = mongoClient.GetDatabase("EventStore");
-        // Get the collection
-        _eventStoreCollection = database.GetCollection<EventModel>("Events");
-    }
-    */
-
     // Since the MongoDB connection is managed in Program.cs,
     // the EventStoreRepository class to use dependency injection for the IMongoCollection<EventModel>
     // instead of creating a new MongoClient instance.

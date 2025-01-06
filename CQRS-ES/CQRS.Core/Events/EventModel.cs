@@ -10,7 +10,7 @@ public class EventModel
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; }
 
-    public string TimeStamp { get; set; }
+    public DateTime TimeStamp { get; set; }
     public Guid AggregateId { get; set; }
     public string AggregateType { get; set; }
     public int Version { get; set; }

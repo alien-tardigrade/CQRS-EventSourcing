@@ -9,7 +9,7 @@ public abstract class BaseEvent:Message
 {
 
     public string EventType { get; set; }
-    public string Version { get; set; }
+    public int Version { get; set; }
 
     // Set the event type via the constructor
     protected BaseEvent(string eventType)
